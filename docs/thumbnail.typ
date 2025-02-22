@@ -1,4 +1,4 @@
-#import "/src/lib.typ" as PACKAGE: *
+#import "/src/lib.typ" as etikett: *
 
 #set page(height: auto, margin: 5mm, fill: none)
 

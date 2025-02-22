@@ -11,6 +11,7 @@ doc:
   typst compile docs/manual.typ docs/manual.pdf
   typst compile docs/thumbnail.typ thumbnail-light.svg
   typst compile --input theme=dark docs/thumbnail.typ thumbnail-dark.svg
+  typst compile --ppi 250 template/main.typ thumbnail.png
   for f in $(find gallery -maxdepth 1 -name '*.typ'); do \
     typst compile "$f"; \
   done

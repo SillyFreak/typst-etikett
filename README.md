@@ -1,37 +1,25 @@
-# The `PACKAGE` Package
+# Etikett
 
-A short description about the project and/or client.
+This template helps you print onto label sheets with rectangular grids of labels. It provides you with a grid of rectangular regions that you can draw label content into, potentially customizing the content of each individual label.
 
-## Template adaptation checklist
-
-- [ ] Fill out `README.md`
-  - Change the `PACKAGE` package name, including code snippets
-  - Check section contents and/or delete sections that don't apply
-- [ ] Check and/or replace `LICENSE` by something that suits your needs
-- [ ] Fill out `typst.toml`
-  - See also the [typst/packages README](https://github.com/typst/packages/?tab=readme-ov-file#package-format)
-- [ ] Adapt Repository URLs in `CHANGELOG.md`
-  - Consider only committing that file with your first release, or removing the "Initial Release" part in the beginning
-- [ ] Adapt or deactivate the release workflow in `.github/workflows/release.yml`
-  - to deactivate it, delete that file or remove/comment out lines 2-4 (`on:` and following)
-  - to use the workflow
-    - [ ] check the values under `env:`, particularly `REGISTRY_REPO`
-    - [ ] if you don't have one, [create a fine-grained personal access token](https://github.com/settings/tokens?type=beta) with [only Contents permission](https://stackoverflow.com/a/75116350/371191) for the `REGISTRY_REPO`
-    - [ ] on this repo, create a secret `REGISTRY_TOKEN` (at `https://github.com/[user]/[repo]/settings/secrets/actions`) that contains the so created token
-
-    if configured correctly, whenever you create a tag `v...`, your package will be pushed onto a branch on the `REGISTRY_REPO`, from which you can then create a pull request against [typst/packages](https://github.com/typst/packages/)
-- [ ] remove/replace the example test case
-- [ ] (add your actual code, docs and tests)
-- [ ] remove this section from the README
+The main features are the following:
+- configure the page dimensions to match the label sheet from your manufacturer: margins, number of labels per row and column, gutters between labels
+  - "upside-down" support for cases when the paper should be put into the printer flipped 180°
+- configure label layout: optional subdivision of labels into sub-labels, content orientation (equivalent to [`page.flipped`](https://typst.app/docs/reference/layout/page/#parameters-flipped))
+  - "debug" mode in which label edges are shown
+- apply content to (sub-)labels:
+  - repeat label contents a specified number of times
+  - apply a content-creating function to an array of data (taken e.g. from a JSON or CSV file)
+  - skip labels that have already been used in a previous print
 
 ## Getting Started
 
-To add this package to your project, use this:
+Using the Typst web app, you can create a project by e.g. using this link: https://typst.app/?template=etikett&version=latest.
 
-```typ
-#import "@preview/PACKAGE:0.1.0": *
+To work locally, use the following command:
 
-...
+```bash
+typst init @preview/etikett
 ```
 
 <picture>

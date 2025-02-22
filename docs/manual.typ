@@ -1,18 +1,18 @@
 #import "template.typ" as template: *
-#import "/src/lib.typ" as PACKAGE
+#import "/src/lib.typ" as etikett
 
 #let package-meta = toml("/typst.toml").package
 #let date = none
 // #let date = datetime(year: ..., month: ..., day: ...)
 
 #show: manual(
-  title: "PACKAGE",
+  title: "Etikett",
   // subtitle: [
   //   A PACKAGE for something
   // ],
   authors: package-meta.authors.map(a => a.split("<").at(0).trim()),
   abstract: [
-    A PACKAGE for something
+    _Etikett_ is a template for printing onto label sheets with rectangular grids of labels.
   ],
   url: package-meta.repository,
   version: package-meta.version,
@@ -20,7 +20,7 @@
 )
 
 // the scope for evaluating expressions and documentation
-#let scope = (PACKAGE: PACKAGE)
+#let scope = (etikett: etikett)
 
 = Introduction
 
@@ -30,7 +30,7 @@ This is a PACKAGE for something.
 
 #module(
   read("/src/lib.typ"),
-  name: "PACKAGE",
+  name: "etikett",
   label-prefix: none,
   scope: scope,
 )
