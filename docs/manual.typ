@@ -24,7 +24,8 @@
 
 = Introduction
 
-This is a PACKAGE for something.
+This template helps you with printing labels, i.e. using sheets of pre-cut adhesive labels that get
+either the same or individualized content printed onto them.
 
 = Module reference
 
