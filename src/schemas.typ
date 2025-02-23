@@ -44,11 +44,18 @@
   ),
   margins: inset,
   gutters: z.either(
-    z.length(),
+    z.length(default: 0pt),
     z.dictionary((
       x: z.length(default: 0pt),
       y: z.length(default: 0pt),
     )),
+    post-transform: (self, it) => {
+      if type(it) != dictionary {
+        (x: it, y: it)
+      } else {
+        it
+      }
+    },
   ),
   rows: z.integer(),
   columns: z.integer(),
