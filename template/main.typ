@@ -1,5 +1,4 @@
-// #import "@preview/etikett:0.1.0"
-#import "/src/lib.typ" as etikett
+#import "@preview/etikett:0.1.0"
 
 #let data = csv("data.csv").slice(1)
 

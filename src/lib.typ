@@ -1,5 +1,7 @@
 /// Renders a grid of labels. This sets up the page, creates the grid, and inserts the label
 /// contents.
+///
+/// -> content
 #let labels(
   /// A label grid sheet definition as created by @@sheet().
   /// -> dictionary
@@ -87,6 +89,18 @@
 }
 
 /// Inserts a number of identical (sub)labels.
+///
+/// Example:
+///
+/// ```typ
+/// #etikett.labels(
+///   // ... sheet configuration
+///
+///   ..repeat(3, my-label),
+/// )
+/// ```
+///
+/// -> array
 #let repeat(
   /// The number of (sub)labels to insert.
   /// -> int
@@ -100,6 +114,19 @@
 
 /// Inserts a number of empty (sub)labels. This is useful for reusing a sheet of labels that has
 /// been partially used already.
+///
+/// Example:
+///
+/// ```typ
+/// #etikett.labels(
+///   // ... sheet configuration
+///
+///   ..skip(3),
+///   // ... add actual labels
+/// )
+/// ```
+///
+/// -> array
 #let skip(
   /// The number of empty (sub)labels to insert.
   /// -> int
@@ -109,6 +136,8 @@
 }
 
 /// Returns a dictionary containing the definitions of a label grid sheet.
+///
+/// -> dictionary
 #let sheet(
   /// The paper size, either as a name like `"a4"`, or a dictionary with lengths `width` and
   /// `height`.

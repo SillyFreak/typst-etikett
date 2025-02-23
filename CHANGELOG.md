@@ -26,11 +26,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
-## [0.1.0] - 2025-01-01
+## [0.1.0] - 2025-02-23
 
 ### Added
 
-- ...
+- `sheet` function for specifying sheet sizes
+- `repeat` and `skip` functions for skipping and repeating grid cells
+- `labels` function for layouting a grid of labels on a sheet
+- typechecking, tests, and documentation
 
 
 [Unreleased]: https://github.com/SillyFreak/typst-etikett/compare/v0.1.0...HEAD
