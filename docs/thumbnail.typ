@@ -20,7 +20,7 @@
   sheet: etikett.sheet(
     paper: "a6",
     margins: 5mm,
-    gutters: (x: 2.5mm),
+    gutters: (2.5mm),
     rows: 6,
     columns: 2,
   ),

@@ -43,6 +43,7 @@
     dimension,
   ),
   margins: inset,
+  flipped: z.boolean(default: false),
   gutters: z.either(
     z.length(default: 0pt),
     z.dictionary((

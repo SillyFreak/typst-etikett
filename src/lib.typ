@@ -36,7 +36,7 @@
   assert.eq(labels.named().len(), 0)
   let labels = labels.pos()
 
-  let (paper, margins, gutters, rows, columns) = sheet
+  let (paper, margins, flipped, gutters, rows, columns) = sheet
   if upside-down and type(margins) == dictionary {
     // if it's not a dictionary all margins are the same anyway
     let (left, right, top, bottom) = margins
@@ -45,7 +45,7 @@
 
   set page(paper: paper) if type(paper) == str
   set page(width: paper.width, height: paper.height) if type(paper) != str
-  set page(margin: margins)
+  set page(margin: margins, flipped: flipped)
 
   labels = labels.chunks(sublabels.rows * sublabels.columns)
 
@@ -113,11 +113,14 @@
   /// by `page()`: valid keys are `left`, `right`, `top`, `bottom`, `x`, `y`, and `rest`. If omitted
   /// (or a side in the dictionary is missing), that value defaults to `0pt`.
   /// -> length | dictionary
-  margins: none,
+  margins: 0pt,
+  /// Whether the sheet is flipped, i.e. landscape
+  /// -> bool
+  flipped: false,
   /// The gutters between labels, either a single length or a dictionary of lengths with keys `x`
   /// and `y`. If omitted (or a value in the dictionary is missing), that value defaults to `0pt`.
   /// -> length | dictionary
-  gutters: none,
+  gutters: 0pt,
   /// The number of rows in the grid of labels. The available space is distributed evenly.
   /// -> int
   rows: none,
@@ -129,6 +132,7 @@
   z.parse((
     paper: paper,
     margins: margins,
+    flipped: flipped,
     gutters: gutters,
     rows: rows,
     columns: columns,
