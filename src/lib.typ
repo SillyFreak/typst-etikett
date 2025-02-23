@@ -15,6 +15,11 @@
   /// but if omitted completely this defaults `1mm`.
   /// -> length | dictionary
   inset: 1mm,
+  /// Whether the direction of content in individual (sub)labels is the regular page orientation,
+  /// or flipped by 90 degrees. This us useful if the label sheet has e.g. wide labels, but they are
+  /// used as tall labels instead.
+  /// -> bool
+  flipped: false,
   /// When set to a dictionary containing integers `rows` and `columns`, each label is further
   /// subdivided into a grid as defined. This is useful if the labels on available grid sheets are
   /// too big for the desired labels. No insets are added around sublabels inside the same label. If
@@ -36,7 +41,7 @@
   assert.eq(labels.named().len(), 0)
   let labels = labels.pos()
 
-  let (paper, margins, flipped, gutters, rows, columns) = sheet
+  let (paper, margins, flipped: page-flipped, gutters, rows, columns) = sheet
   if upside-down and type(margins) == dictionary {
     // if it's not a dictionary all margins are the same anyway
     let (left, right, top, bottom) = margins
@@ -45,7 +50,7 @@
 
   set page(paper: paper) if type(paper) == str
   set page(width: paper.width, height: paper.height) if type(paper) != str
-  set page(margin: margins, flipped: flipped)
+  set page(margin: margins, flipped: page-flipped)
 
   labels = labels.chunks(sublabels.rows * sublabels.columns)
 
@@ -63,40 +68,40 @@
       inset: inset,
       stroke: if debug { 0.5pt+gray },
       ..labels.map(label => {
-        show: block.with(
-          width: 100%,
-          height: 100%,
-          stroke: if debug { 0.5pt+gray },
-        )
-
-        // show: rotate.with(-90deg, reflow: true)
         grid(
           rows: sublabels.rows*(1fr,),
           columns: sublabels.columns*(1fr,),
           stroke: if debug { 0.5pt+gray },
-          ..label,
+          ..label.map(sublabel => {
+            show: {
+              if flipped { rotate.with(-90deg, reflow: true) }
+              else { it => it }
+            }
+            show: block.with(width: 100%, height: 100%)
+            sublabel
+          }),
         )
       }),
     )
   }
 }
 
-/// Inserts a number of identical (sub-)labels.
+/// Inserts a number of identical (sub)labels.
 #let repeat(
-  /// The number of (sub-)labels to insert.
+  /// The number of (sub)labels to insert.
   /// -> int
   n,
-  /// The content of the (sub-)labels.
+  /// The content of the (sub)labels.
   /// -> content
   body,
 ) = {
   n * (body,)
 }
 
-/// Inserts a number of empty (sub-)labels. This is useful for reusing a sheet of labels that has
+/// Inserts a number of empty (sub)labels. This is useful for reusing a sheet of labels that has
 /// been partially used already.
 #let skip(
-  /// The number of empty (sub-)labels to insert.
+  /// The number of empty (sub)labels to insert.
   /// -> int
   n
 ) = {
