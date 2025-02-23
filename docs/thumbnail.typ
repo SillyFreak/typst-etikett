@@ -26,6 +26,5 @@
   ),
   debug: true,
 
-  ..etikett.skip(2),
   ..data.map(name-label),
 )

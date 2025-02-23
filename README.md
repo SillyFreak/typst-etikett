@@ -22,6 +22,41 @@ To work locally, use the following command:
 typst init @preview/etikett
 ```
 
+Usage would the look something like this:
+
+
+```typ
+#import "@preview/etikett:0.1.0"
+
+// maybe load the data for your labels from a file, ignoring the columns header
+#let data = csv("data.csv").slice(1)
+
+// define how a label should look
+#let name-label((first-name, last-name)) = [
+  #set align(center+horizon)
+  #set text(14pt)
+  Hello, my name is\
+  #set text(1.4em)
+  *#first-name #last-name*
+]
+
+#etikett.labels(
+  // define the dimensions of the label sheet you're printing onto
+  sheet: etikett.sheet(
+    paper: "a6",
+    margins: 5mm,
+    gutters: (x: 2.5mm),
+    rows: 6,
+    columns: 2,
+  ),
+  // when preparing the labels, you can display the label dimensions
+  // debug: true,
+
+  // produce the labels for your dataset
+  ..data.map(name-label),
+)
+```
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./thumbnail-dark.svg">
   <img src="./thumbnail-light.svg">
