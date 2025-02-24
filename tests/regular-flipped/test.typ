@@ -1,4 +1,4 @@
-#import "/src/lib.typ" as etikett
+#import "/src/lib.typ" as etykett
 
 #let test-label(n) = [
   #set align(center+horizon)
@@ -6,8 +6,8 @@
   #n
 ]
 
-#etikett.labels(
-  sheet: etikett.sheet(
+#etykett.labels(
+  sheet: etykett.sheet(
     paper: (width: 300pt, height: 400pt),
     margins: 10pt,
     gutters: 20pt,

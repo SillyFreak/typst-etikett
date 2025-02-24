@@ -1,4 +1,4 @@
-#import "/src/lib.typ" as etikett
+#import "/src/lib.typ" as etykett
 
 #set page(fill: none)
 
@@ -16,8 +16,8 @@
   *#first-name #last-name*
 ]
 
-#etikett.labels(
-  sheet: etikett.sheet(
+#etykett.labels(
+  sheet: etykett.sheet(
     paper: "a6",
     margins: 5mm,
     gutters: (2.5mm),

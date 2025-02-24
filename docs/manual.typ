@@ -1,17 +1,17 @@
 #import "template.typ" as template: *
-#import "/src/lib.typ" as etikett
+#import "/src/lib.typ" as etykett
 
 #let package-meta = toml("/typst.toml").package
 #let date = datetime(year: 2025, month: 2, day: 23)
 
 #show: manual(
-  title: "Etikett",
+  title: "Etykett",
   // subtitle: [
   //   A PACKAGE for something
   // ],
   authors: package-meta.authors.map(a => a.split("<").at(0).trim()),
   abstract: [
-    _Etikett_ is a template for printing onto label sheets with rectangular grids of labels.
+    _Etykett_ is a template for printing onto label sheets with rectangular grids of labels.
   ],
   url: package-meta.repository,
   version: package-meta.version,
@@ -19,7 +19,7 @@
 )
 
 // the scope for evaluating expressions and documentation
-#let scope = (etikett: etikett)
+#let scope = (etykett: etykett)
 
 = Introduction
 
@@ -34,14 +34,14 @@ Here is a simple example for reading data from a CSV file and putting each entry
 #codly.codly(ranges: ((none, 24), (33, none)), smart-skip: true)
 #raw(block: true, lang: "typ", read("/template/main.typ"))
 
-Check out the parameter documentation of #ref-fn("labels()") and #ref-fn("sheet()") to learn about other capabilities of _Etikett_.
+Check out the parameter documentation of #ref-fn("labels()") and #ref-fn("sheet()") to learn about other capabilities of _Etykett_.
 
 #pagebreak()
 = Module reference
 
 #module(
   read("/src/lib.typ"),
-  name: "etikett",
+  name: "etykett",
   label-prefix: none,
   scope: scope,
 )

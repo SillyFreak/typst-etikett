@@ -1,4 +1,4 @@
-#import "@preview/etikett:0.1.0"
+#import "@preview/etykett:0.1.0"
 
 #let data = csv("data.csv").slice(1)
 
@@ -10,8 +10,8 @@
   *#first-name #last-name*
 ]
 
-#etikett.labels(
-  sheet: etikett.sheet(
+#etykett.labels(
+  sheet: etykett.sheet(
     paper: "a4",
     margins: (
       top: 14mm,
@@ -29,6 +29,6 @@
   // ),
   debug: true,
 
-  ..etikett.skip(3),
+  ..etykett.skip(3),
   ..data.map(name-label),
 )

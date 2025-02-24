@@ -1,4 +1,4 @@
-# Etikett
+# Etykett
 
 This template helps you print onto label sheets with rectangular grids of labels. It provides you with a grid of rectangular regions that you can draw label content into, potentially customizing the content of each individual label.
 
@@ -14,19 +14,19 @@ The main features are the following:
 
 ## Getting Started
 
-Using the Typst web app, you can create a project by e.g. using this link: https://typst.app/?template=etikett&version=latest.
+Using the Typst web app, you can create a project by e.g. using this link: https://typst.app/?template=etykett&version=latest.
 
 To work locally, use the following command:
 
 ```bash
-typst init @preview/etikett
+typst init @preview/etykett
 ```
 
 Usage would the look something like this:
 
 
 ```typ
-#import "@preview/etikett:0.1.0"
+#import "@preview/etykett:0.1.0"
 
 // maybe load the data for your labels from a file, ignoring the columns header
 #let data = csv("data.csv").slice(1)
@@ -40,9 +40,9 @@ Usage would the look something like this:
   *#first-name #last-name*
 ]
 
-#etikett.labels(
+#etykett.labels(
   // define the dimensions of the label sheet you're printing onto
-  sheet: etikett.sheet(
+  sheet: etykett.sheet(
     paper: "a6",
     margins: 5mm,
     gutters: (x: 2.5mm),

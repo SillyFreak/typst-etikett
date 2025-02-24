@@ -93,7 +93,7 @@
 /// Example:
 ///
 /// ```typ
-/// #etikett.labels(
+/// #etykett.labels(
 ///   // ... sheet configuration
 ///
 ///   ..repeat(3, my-label),
@@ -118,7 +118,7 @@
 /// Example:
 ///
 /// ```typ
-/// #etikett.labels(
+/// #etykett.labels(
 ///   // ... sheet configuration
 ///
 ///   ..skip(3),
